@@ -1,0 +1,150 @@
+resources:
+  - ../../robots
+  - ../../worlds
+  - ../../objects
+  - ../../demos
+
+worlds:
+  world:
+    rtf_desired: 1
+
+simulations:
+  hsrb4s_simulation:
+    simulator: mujoco
+    world:
+      name: world
+      path: hsr_robot/hsr_mujoco/model/world_two_cups_with_dummies.xml
+    robots:
+      hsrb4s:
+        path: hsr_robot/hsr_mujoco/model/hsrb4s.xml
+        apply:
+          body:
+            hsrb4s:
+              pos: [-1, 0, 0.0]
+              quat: [0.0, 0.0, 0.0, 1.0]
+            gravcomp: 1
+    config:
+      step_size: 0.002 
+
+multiverse_server:
+  host: "tcp://127.0.0.1"
+  port: 7000
+
+multiverse_clients:
+  hsrb4s_simulation:
+    port: 7500
+    send:
+      body: ["position", "quaternion"]
+      joint: ["joint_rvalue", "joint_tvalue", "joint_linear_velocity", "joint_angular_velocity", "joint_force", "joint_torque"]
+    receive:
+      # Head actuators
+      head_pan_joint_actuator: ["cmd_joint_rvalue"]
+      head_tilt_joint_actuator: ["cmd_joint_rvalue"]
+      
+      # Arm actuators
+      arm_lift_joint_actuator: ["cmd_joint_rvalue"]
+      arm_flex_joint_actuator: ["cmd_joint_rvalue"]
+      arm_roll_joint_actuator: ["cmd_joint_rvalue"]
+      wrist_flex_joint_actuator: ["cmd_joint_rvalue"]
+      wrist_roll_joint_actuator: ["cmd_joint_rvalue"]
+      
+      # Gripper actuators
+      hand_motor_joint_actuator: ["cmd_joint_rvalue"]
+      hand_l_spring_proximal_joint_actuator: ["cmd_joint_rvalue"]
+      hand_r_spring_proximal_joint_actuator: ["cmd_joint_rvalue"]
+
+  ros2:
+    ros_nodes:
+      services:
+        socket:
+          - port: 7400
+    
+      publishers:
+        tf:
+          - meta_data:
+              world_name: world
+              length_unit: m
+              angle_unit: rad
+              mass_unit: kg
+              time_unit: s
+            port: 7301
+            topic: /tf
+            rate: 60
+            root_frame_id: world
+            # body: hsrb4s
+            # child_frame_id: base_link
+            
+        odom:
+          - meta_data:
+              world_name: world
+              length_unit: m
+              angle_unit: rad
+              mass_unit: kg
+              time_unit: s
+            port: 7302
+            odom_topic: /odom
+            tf_topic: /tf
+            rate: 60
+            body: hsrb4s
+            # frame_id: odom
+            # child_frame_id: base_link
+            
+
+
+      subscribers:
+        cmd_vel:
+          - meta_data:
+              world_name: world
+              length_unit: m
+              angle_unit: rad
+              mass_unit: kg
+              time_unit: s
+              handedness: rhs
+            port: 7200
+            topic: /cmd_vel
+            body: hsrb4s
+
+    ros2_control:
+      - meta_data:
+          world_name: world
+          length_unit: m
+          angle_unit: rad
+          mass_unit: kg
+          time_unit: s
+          handedness: rhs
+        port: 7601
+        controller_manager:
+          robot: hsrb4s
+          robot_description: /robot_description
+          urdf: hsr_robot/hsr_description/hsr_description/robots/hsrb4s.urdf
+          config: hsr_robot/hsr_control/config/ros2_controller.yaml
+          tf_topic: /tf
+          actuators:
+            # Head actuators
+            head_pan_joint_actuator: head_pan_joint
+            head_tilt_joint_actuator: head_tilt_joint
+            
+            # Arm actuators
+            arm_lift_joint_actuator: arm_lift_joint
+            arm_flex_joint_actuator: arm_flex_joint
+            arm_roll_joint_actuator: arm_roll_joint
+            wrist_flex_joint_actuator: wrist_flex_joint
+            wrist_roll_joint_actuator: wrist_roll_joint
+            
+            # Gripper actuators
+            hand_motor_joint_actuator: hand_motor_joint
+            hand_l_spring_proximal_joint_actuator: hand_l_spring_proximal_joint
+            hand_r_spring_proximal_joint_actuator: hand_r_spring_proximal_joint
+            
+          controllers:
+            spawn:
+              - joint_state_broadcaster
+              - arm_trajectory_controller
+              - head_trajectory_controller
+              - gripper_controller
+
+    ros2_run:
+      rviz2:
+        config: hsr_robot/hsr_description/hsr_description/launch/rviz2.rviz
+        robot_descriptions:
+          hsrb4s_description: hsr_robot/hsr_description/hsr_description/robots/hsrb4s.urdf

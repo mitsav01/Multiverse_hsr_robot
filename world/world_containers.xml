@@ -1,0 +1,654 @@
+<mujoco>
+	<compiler/>
+	<option timestep="0.001" integrator="RK4" solver="CG" gravity="0 0 -9.81">
+		<flag sensornoise="disable" contact="enable"/>
+	</option>
+
+
+	<asset>
+		<texture name="grid" type="2d" builtin="checker" width="512" height="512" rgb1=".1 .2 .3" rgb2=".2 .3 .4" />
+		<material name="grid" texture="grid" texrepeat="1 1" texuniform="true" reflectance=".2" />
+	</asset>
+
+	<worldbody>
+		<geom name="floor" size="0 0 .05" type="plane" material="grid" condim="3" />
+		<light diffuse="1 1 1" pos="0 0 4" dir="0 0 -1" />
+		<light diffuse="1 1 1" pos="2 0 4" dir="0 0 -1" />
+		<light diffuse="1 1 1" pos="1 0 4" dir="0 0 -1" />
+	</worldbody>
+
+	<worldbody>
+		<body name="table" pos="2 0 0.1">
+			<geom name="table_geom" type="box" size="0.2 0.5 0.1" rgba=".89 0.72 .56 1"/>
+		</body>
+
+		<body name="bowl" pos="2 0.2 0.5">
+			<freejoint/>
+			<geom name="bottom" type="box" size="0.1 0.1 0.05" pos="0 0 -0.04" rgba="1 0 0 1"/>
+
+			<geom name="side1" type="box" size="0.01 0.1 0.05" pos="0.09 0 0.04" rgba="1 0 0 1"/>
+			<geom name="side2" type="box" size="0.01 0.1 0.05" pos="-0.09 0 0.04" rgba="1 0 0 1"/>
+			<geom name="side3" type="box" size="0.1 0.01 0.05" pos="0 0.09 0.04" rgba="1 0 0 1"/>
+			<geom name="side4" type="box" size="0.1 0.01 0.05" pos="0 -0.09 0.04" rgba="1 0 0 1"/>
+		</body>
+
+		<body name="free_cup" pos="2 -0.2 0.5">
+		<freejoint/>
+			<geom type="box" pos="0 0 -0.076" size="0.03 0.03 0.03" rgba="0 1 0 1"/>
+			<geom type="box" pos="0.03 0 0" euler="0 0 0" size="0.0044 0.013420519420888278 0.08" rgba="0 1 0 1" />
+			<geom type="box" pos="0.021213 0.021213 0" euler="0 0 0.7853981633974483" size="0.0044 0.013420519420888278 0.08" rgba="0 1 0 1" />
+			<geom type="box" pos="0 0.03 0" euler="0 0 1.5707963267948966" size="0.0044 0.013420519420888278 0.08" rgba="0 1 0 1" />
+			<geom type="box" pos="-0.021213 0.021213 0" euler="0 0 2.356194490192345" size="0.0044 0.013420519420888278 0.08" rgba="0 1 0 1" />
+			<geom type="box" pos="-0.03 0 0" euler="0 0 3.141592653589793" size="0.0044 0.013420519420888278 0.08" rgba="0 1 0 1" />
+			<geom type="box" pos="-0.021213 -0.021213 0" euler="0 0 -2.356194490192345" size="0.0044 0.013420519420888278 0.08" rgba="0 1 0 1" />
+			<geom type="box" pos="0 -0.03 0" euler="0 0 -1.5707963267948966" size="0.0044 0.013420519420888278 0.08" rgba="0 1 0 1" />
+			<geom type="box" pos="0.021213 -0.021213 0" euler="0 0 -0.7853981633974483" size="0.0044 0.013420519420888278 0.08" rgba="0 1 0 1" />
+		</body>
+	</worldbody>
+
+	<worldbody>
+		<body name="sync_ball0" pos="0.59 0.075 0.8">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball1" pos="0.59 0.075 0.81">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball2" pos="0.59 0.075 0.8200000000000001">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball3" pos="0.59 0.075 0.8300000000000001">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball4" pos="0.59 0.075 0.8400000000000001">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball5" pos="0.59 0.075 0.8500000000000001">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball6" pos="0.59 0.075 0.8600000000000001">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball7" pos="0.59 0.075 0.8700000000000001">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball8" pos="0.59 0.075 0.88">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball9" pos="0.59 0.075 0.89">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball10" pos="0.59 0.075 0.9">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball11" pos="0.59 0.075 0.91">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball12" pos="0.59 0.075 0.92">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball13" pos="0.59 0.075 0.93">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball14" pos="0.59 0.075 0.9400000000000001">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball15" pos="0.59 0.075 0.9500000000000001">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball16" pos="0.59 0.075 0.9600000000000001">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball17" pos="0.59 0.075 0.9700000000000001">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball18" pos="0.59 0.075 0.98">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball19" pos="0.59 0.075 0.99">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball20" pos="0.59 0.075 1.0">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball21" pos="0.59 0.075 1.01">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball22" pos="0.59 0.075 1.02">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball23" pos="0.59 0.075 1.03">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball24" pos="0.59 0.075 1.04">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball25" pos="0.59 0.075 1.05">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball26" pos="0.59 0.075 1.06">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball27" pos="0.59 0.075 1.07">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball28" pos="0.59 0.075 1.08">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball29" pos="0.59 0.075 1.09">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball30" pos="0.59 0.075 1.1">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball31" pos="0.59 0.075 1.11">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball32" pos="0.59 0.075 1.12">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball33" pos="0.59 0.075 1.1300000000000001">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball34" pos="0.59 0.075 1.1400000000000001">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball35" pos="0.59 0.075 1.1500000000000001">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball36" pos="0.59 0.075 1.1600000000000001">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball37" pos="0.59 0.075 1.17">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball38" pos="0.59 0.075 1.1800000000000002">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball39" pos="0.59 0.075 1.19">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball40" pos="0.59 0.075 1.2000000000000002">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball41" pos="0.59 0.075 1.21">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball42" pos="0.59 0.075 1.22">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball43" pos="0.59 0.075 1.23">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball44" pos="0.59 0.075 1.24">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball45" pos="0.59 0.075 1.25">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball46" pos="0.59 0.075 1.26">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball47" pos="0.59 0.075 1.27">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball48" pos="0.59 0.075 1.28">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball49" pos="0.59 0.075 1.29">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball50" pos="0.59 0.075 1.3">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball51" pos="0.59 0.075 1.31">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball52" pos="0.59 0.075 1.32">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball53" pos="0.59 0.075 1.33">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball54" pos="0.59 0.075 1.34">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball55" pos="0.59 0.075 1.35">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball56" pos="0.59 0.075 1.36">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball57" pos="0.59 0.075 1.37">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball58" pos="0.59 0.075 1.38">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball59" pos="0.59 0.075 1.3900000000000001">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball60" pos="0.59 0.075 1.4">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball61" pos="0.59 0.075 1.4100000000000001">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball62" pos="0.59 0.075 1.42">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball63" pos="0.59 0.075 1.4300000000000002">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball64" pos="0.59 0.075 1.44">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball65" pos="0.59 0.075 1.4500000000000002">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball66" pos="0.59 0.075 1.46">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball67" pos="0.59 0.075 1.4700000000000002">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball68" pos="0.59 0.075 1.48">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball69" pos="0.59 0.075 1.4900000000000002">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball70" pos="0.59 0.075 1.5">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball71" pos="0.59 0.075 1.51">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball72" pos="0.59 0.075 1.52">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball73" pos="0.59 0.075 1.53">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball74" pos="0.59 0.075 1.54">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball75" pos="0.59 0.075 1.55">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball76" pos="0.59 0.075 1.56">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball77" pos="0.59 0.075 1.57">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball78" pos="0.59 0.075 1.58">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball79" pos="0.59 0.075 1.59">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball80" pos="0.59 0.075 1.6">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball81" pos="0.59 0.075 1.61">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball82" pos="0.59 0.075 1.62">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball83" pos="0.59 0.075 1.6300000000000001">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball84" pos="0.59 0.075 1.6400000000000001">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball85" pos="0.59 0.075 1.65">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball86" pos="0.59 0.075 1.6600000000000001">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball87" pos="0.59 0.075 1.67">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball88" pos="0.59 0.075 1.6800000000000002">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball89" pos="0.59 0.075 1.69">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball90" pos="0.59 0.075 1.7000000000000002">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball91" pos="0.59 0.075 1.71">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball92" pos="0.59 0.075 1.7200000000000002">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball93" pos="0.59 0.075 1.73">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball94" pos="0.59 0.075 1.7400000000000002">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball95" pos="0.59 0.075 1.75">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball96" pos="0.59 0.075 1.76">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball97" pos="0.59 0.075 1.77">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball98" pos="0.59 0.075 1.78">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball99" pos="0.59 0.075 1.79">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball100" pos="0.59 0.075 1.8">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball101" pos="0.59 0.075 1.81">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball102" pos="0.59 0.075 1.82">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball103" pos="0.59 0.075 1.83">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball104" pos="0.59 0.075 1.84">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball105" pos="0.59 0.075 1.85">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball106" pos="0.59 0.075 1.86">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball107" pos="0.59 0.075 1.87">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball108" pos="0.59 0.075 1.8800000000000001">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball109" pos="0.59 0.075 1.8900000000000001">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball110" pos="0.59 0.075 1.9000000000000001">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball111" pos="0.59 0.075 1.9100000000000001">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball112" pos="0.59 0.075 1.9200000000000002">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball113" pos="0.59 0.075 1.9300000000000002">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball114" pos="0.59 0.075 1.9400000000000002">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball115" pos="0.59 0.075 1.9500000000000002">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball116" pos="0.59 0.075 1.96">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball117" pos="0.59 0.075 1.97">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball118" pos="0.59 0.075 1.98">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball119" pos="0.59 0.075 1.99">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball120" pos="0.59 0.075 2.0">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball121" pos="0.59 0.075 2.01">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball122" pos="0.59 0.075 2.02">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball123" pos="0.59 0.075 2.0300000000000002">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball124" pos="0.59 0.075 2.04">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball125" pos="0.59 0.075 2.05">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball126" pos="0.59 0.075 2.06">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball127" pos="0.59 0.075 2.0700000000000003">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball128" pos="0.59 0.075 2.08">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball129" pos="0.59 0.075 2.09">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball130" pos="0.59 0.075 2.1">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball131" pos="0.59 0.075 2.1100000000000003">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball132" pos="0.59 0.075 2.12">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball133" pos="0.59 0.075 2.13">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball134" pos="0.59 0.075 2.14">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball135" pos="0.59 0.075 2.1500000000000004">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball136" pos="0.59 0.075 2.16">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball137" pos="0.59 0.075 2.17">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball138" pos="0.59 0.075 2.18">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball139" pos="0.59 0.075 2.1900000000000004">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball140" pos="0.59 0.075 2.2">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball141" pos="0.59 0.075 2.21">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball142" pos="0.59 0.075 2.2199999999999998">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball143" pos="0.59 0.075 2.23">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball144" pos="0.59 0.075 2.24">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball145" pos="0.59 0.075 2.25">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball146" pos="0.59 0.075 2.26">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball147" pos="0.59 0.075 2.27">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball148" pos="0.59 0.075 2.2800000000000002">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		<body name="sync_ball149" pos="0.59 0.075 2.29">
+			<freejoint/>
+			<geom type="sphere" size="0.005" rgba="1 0 0 1"/>
+		</body>
+		
+	</worldbody>
+
+
+</mujoco>

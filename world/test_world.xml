@@ -1,0 +1,55 @@
+<mujoco>
+    <compiler/>
+    <option timestep="0.002" integrator="Euler" solver="Newton" gravity="0 0 -9.81">
+        <flag sensor="disable" contact="enable"/>
+    </option>
+
+    <default>
+        <geom condim="4" solimp="0.99 0.99 0" solref="0.01 1" friction="1 0.005 0.0001"/>
+    </default>
+
+    <asset>
+        <texture type="skybox" builtin="gradient" rgb1="1 1 1" rgb2=".6 .8 1" width="256" height="256"/>
+        <texture name="grid" type="2d" builtin="checker" width="112" height="112" rgb1="0 0 0" rgb2="1 1 1" />
+        <material name="grid" texture="grid" texrepeat="1 1" texuniform="true" reflectance=".2" />
+    </asset>
+
+    <worldbody>
+        <geom name="floor" size="0 0 .05" type="plane" material="grid" condim="3" />
+        <light diffuse="1 1 1" pos="0 0 5" dir="0 0 -1" />
+        
+        <!-- Debug markers -->
+        <body name="debug_origin" pos="0 0 0">
+            <geom type="sphere" size="0.1" rgba="1 0 0 1"/>
+        </body>
+
+        <body name="debug_cup_target" pos="2 -0.2 0.3">
+            <geom type="sphere" size="0.03" rgba="1 1 0 1"/>
+        </body>
+
+        <!-- Table -->
+        <body name="table" pos="2 0 0.1">
+            <geom name="table_geom" type="box" size="0.2 1 0.1" rgba=".89 0.72 .56 1"/>
+        </body>
+
+        <!-- Test cup - simplified version -->
+        <body name="free_cup" pos="2 -0.2 0.3">
+            <freejoint/>
+            <inertial pos="0.0 0.0 0.0" mass="0.01" diaginertia="0.0008 0.0008 0.00015" />
+            <!-- Simplified cup geometry -->
+            <geom name="cup_bottom" type="box" pos="0 0 -0.076" size="0.03 0.03 0.03" rgba="0 1 0 1"/>
+            <geom name="cup_side1" type="box" pos="0.03 0 0" size="0.004 0.013 0.08" rgba="0 1 0 1" />
+            <geom name="cup_side2" type="box" pos="-0.03 0 0" size="0.004 0.013 0.08" rgba="0 1 0 1" />
+            <geom name="cup_side3" type="box" pos="0 0.03 0" size="0.013 0.004 0.08" rgba="0 1 0 1" />
+            <geom name="cup_side4" type="box" pos="0 -0.03 0" size="0.013 0.004 0.08" rgba="0 1 0 1" />
+        </body>
+
+        <!-- Second cup for testing -->
+        <body name="free_cup2" pos="2 -0.6 0.3">
+            <freejoint/>
+            <inertial pos="0.0 0.0 0.0" mass="0.01" diaginertia="0.0008 0.0008 0.00015" />
+            <geom name="cup2_bottom" type="box" pos="0 0 -0.076" size="0.03 0.03 0.03" rgba="0 0 1 1"/>
+            <geom name="cup2_side1" type="box" pos="0.03 0 0" size="0.004 0.013 0.08" rgba="0 0 1 1" />
+        </body>
+    </worldbody>
+</mujoco>

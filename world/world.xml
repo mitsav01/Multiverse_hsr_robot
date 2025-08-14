@@ -1,0 +1,23 @@
+<mujoco>
+  <compiler/>
+  <option timestep="0.001" integrator="RK4" solver="CG" gravity="0 0 -9.81">
+    </option>
+
+  <asset>
+    <texture name="grid" type="2d" builtin="checker" width="512" height="512" rgb1=".1 .2 .3" rgb2=".2 .3 .4" />
+    <material name="grid" texture="grid" texrepeat="1 1" texuniform="true" reflectance=".2" />
+  </asset>
+
+  <worldbody>
+    <body name="main_scene" pos="0 0 0">
+      <geom name="floor" size="0 0 .05" type="plane" material="grid" condim="3" />
+      <light diffuse="1 1 1" pos="0 0 4" dir="0 0 -1" />
+      <light diffuse="1 1 1" pos="1 -1 4" dir="0 0 -1" />
+    </body>
+  </worldbody>
+  <worldbody>
+    <body name="sync_ball" pos="0.7 0.075 0.7">
+      <geom type="sphere" size="0.01" rgba="1 0 0 1" condim="6" priority="2" friction="3 0.005 0.001"/>
+    </body>
+  </worldbody>
+</mujoco>
