@@ -1,8 +1,8 @@
 resources:
-  - ../../robots
-  - ../../worlds
-  - ../../objects
-  - ../../demos
+  - ../robot
+  - ../world
+  - ../objects
+  - ../demo
 
 worlds:
   world:
@@ -13,14 +13,14 @@ simulations:
     simulator: mujoco
     world:
       name: world
-      path: hsr_robot/hsr_mujoco/model/world_two_cups_with_dummies.xml
+      path: world_two_cups_with_dummies.xml
     robots:
       hsrb4s:
-        path: hsr_robot/hsr_mujoco/model/hsrb4s.xml
+        path: hsr_mujoco/model/robot/hsrb4s.xml
         apply:
           body:
             hsrb4s:
-              pos: [-1, 0, 0.0]
+              pos: [0, 0, 0]   # small offset to avoid self-transform
               quat: [0.0, 0.0, 0.0, 1.0]
             gravcomp: 1
     config:
@@ -55,10 +55,6 @@ multiverse_clients:
 
   ros2:
     ros_nodes:
-      services:
-        socket:
-          - port: 7400
-    
       publishers:
         tf:
           - meta_data:
@@ -71,9 +67,8 @@ multiverse_clients:
             topic: /tf
             rate: 60
             root_frame_id: world
-            # body: hsrb4s
-            # child_frame_id: base_link
-            
+            body: hsrb4s
+
         odom:
           - meta_data:
               world_name: world
@@ -86,10 +81,7 @@ multiverse_clients:
             tf_topic: /tf
             rate: 60
             body: hsrb4s
-            # frame_id: odom
-            # child_frame_id: base_link
-            
-
+            root_frame_id: odom
 
       subscribers:
         cmd_vel:
@@ -116,8 +108,8 @@ multiverse_clients:
         controller_manager:
           robot: hsrb4s
           robot_description: /robot_description
-          urdf: hsr_robot/hsr_description/hsr_description/robots/hsrb4s.urdf
-          config: hsr_robot/hsr_control/config/ros2_controller.yaml
+          urdf: hsr_description/hsr_description/robots/hsrb4s.urdf
+          config: hsr_control/config/ros2_controller.yaml
           tf_topic: /tf
           actuators:
             # Head actuators
@@ -145,6 +137,6 @@ multiverse_clients:
 
     ros2_run:
       rviz2:
-        config: hsr_robot/hsr_description/hsr_description/launch/rviz2.rviz
+        config: hsr_mujoco/rviz_config/rviz_config2.rviz
         robot_descriptions:
-          hsrb4s_description: hsr_robot/hsr_description/hsr_description/robots/hsrb4s.urdf
+          hsrb4s_description: hsr_description/hsr_description/robots/hsrb4s.urdf

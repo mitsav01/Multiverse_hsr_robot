@@ -1,8 +1,8 @@
 resources:
-  - ../../robots
-  - ../../worlds
-  - ../../objects
-  - ../../demos
+  - ../robot
+  - ../world
+  - ../objects
+  - ../demo
 
 worlds:
   world:
@@ -13,10 +13,10 @@ simulations:
     simulator: mujoco
     world:
       name: world
-      path: hsr_robot/hsr_mujoco/model/world_two_cups_with_dummies.xml
+      path: world_two_cups_with_dummies.xml
     robots:
       hsrb4s:
-        path: hsr_robot/hsr_mujoco/model/hsrb4s.xml
+        path: hsr_mujoco/model/robot/hsrb4s.xml
         apply:
           body:
             hsrb4s:
@@ -24,4 +24,4 @@ simulations:
               quat: [0.0, 0.0, 0.0, 1.0]
             gravcomp: 1
     config:
-      step_size: 0.002 
+      step_size: 0.001

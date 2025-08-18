@@ -1,155 +1,12 @@
 controller_manager:
   ros__parameters:
-    update_rate: 100  # Hz
+    update_rate: 200  # Hz, can adjust for sim performance
 
-    effort_controller:
-      type: effort_controllers/JointGroupEffortController
-
-    effort_controller:
-      ros__parameters:
-        joints:
-          - base_roll_joint
-          - base_r_drive_wheel_joint
-          - base_l_drive_wheel_joint
-          - base_r_passive_wheel_x_frame_joint
-          - base_r_passive_wheel_y_frame_joint
-          - base_r_passive_wheel_z_joint
-          - base_l_passive_wheel_x_frame_joint
-          - base_l_passive_wheel_y_frame_joint
-          - base_l_passive_wheel_z_joint
-          - torso_lift_joint
-          - head_pan_joint
-          - head_tilt_joint
-          - arm_lift_joint
-          - arm_flex_joint
-          - arm_roll_joint
-          - wrist_flex_joint
-          - wrist_roll_joint
-          - hand_motor_joint
-          - hand_l_proximal_joint
-          - hand_l_spring_proximal_joint
-          - hand_l_mimic_distal_joint
-          - hand_l_distal_joint
-          - hand_r_proximal_joint
-          - hand_r_spring_proximal_joint
-          - hand_r_mimic_distal_joint
-          - hand_r_distal_joint
     joint_state_broadcaster:
       type: joint_state_broadcaster/JointStateBroadcaster
 
-    # Position Controllers
-    arm_flex_joint_position_controller:
-      type: effort_controllers/JointPositionController
-      joint: arm_flex_joint
-      pid:
-        p: 2000.0
-        i: 100.0
-        d: 50.0
-
-    arm_lift_joint_position_controller:
-      type: effort_controllers/JointPositionController
-      joint: arm_lift_joint
-      pid:
-        p: 2000.0
-        i: 100.0
-        d: 50.0
-
-    arm_roll_joint_position_controller:
-      type: effort_controllers/JointPositionController
-      joint: arm_roll_joint
-      pid:
-        p: 2000.0
-        i: 100.0
-        d: 50.0
-
-    head_pan_joint_position_controller:
-      type: effort_controllers/JointPositionController
-      joint: head_pan_joint
-      pid:
-        p: 2000.0
-        i: 100.0
-        d: 50.0
-
-    head_tilt_joint_position_controller:
-      type: effort_controllers/JointPositionController
-      joint: head_tilt_joint
-      pid:
-        p: 2000.0
-        i: 100.0
-        d: 50.0
-
-    wrist_flex_joint_position_controller:
-      type: effort_controllers/JointPositionController
-      joint: wrist_flex_joint
-      pid:
-        p: 2000.0
-        i: 100.0
-        d: 50.0
-
-    wrist_roll_joint_position_controller:
-      type: effort_controllers/JointPositionController
-      joint: wrist_roll_joint
-      pid:
-        p: 2000.0
-        i: 100.0
-        d: 50.0
-
-    hand_motor_joint_position_controller:
-      type: effort_controllers/JointPositionController
-      joint: hand_motor_joint
-      pid:
-        p: 2000.0
-        i: 100.0
-        d: 50.0
-
-    hand_l_spring_proximal_joint_position_controller:
-      type: effort_controllers/JointPositionController
-      joint: hand_l_spring_proximal_joint
-      pid:
-        p: 2000.0
-        i: 100.0
-        d: 50.0
-
-    hand_r_spring_proximal_joint_position_controller:
-      type: effort_controllers/JointPositionController
-      joint: hand_r_spring_proximal_joint
-      pid:
-        p: 2000.0
-        i: 100.0
-        d: 50.0
-
-    # Joint Trajectory Controllers
-    arm_trajectory_controller:
-      type: joint_trajectory_controller/JointTrajectoryController
-      joints:
-        - arm_flex_joint
-        - arm_lift_joint
-        - arm_roll_joint
-        - wrist_flex_joint
-        - wrist_roll_joint
-      gains:
-        arm_flex_joint: {p: 2000.0, i: 100.0, d: 50.0, i_clamp: 10.0}
-        arm_lift_joint: {p: 2000.0, i: 100.0, d: 50.0, i_clamp: 10.0}
-        arm_roll_joint: {p: 2000.0, i: 100.0, d: 50.0, i_clamp: 10.0}
-        wrist_flex_joint: {p: 2000.0, i: 100.0, d: 50.0, i_clamp: 10.0}
-        wrist_roll_joint: {p: 2000.0, i: 100.0, d: 50.0, i_clamp: 10.0}
-      constraints:
-        stopped_velocity_tolerance: 0.0
-
-    head_trajectory_controller:
-      type: joint_trajectory_controller/JointTrajectoryController
-      joints:
-        - head_pan_joint
-        - head_tilt_joint
-      gains:
-        head_pan_joint: {p: 2000.0, i: 100.0, d: 50.0, i_clamp: 10.0}
-        head_tilt_joint: {p: 2000.0, i: 100.0, d: 50.0, i_clamp: 10.0}
-      constraints:
-        stopped_velocity_tolerance: 0.0
-
-    # Velocity Controllers
-    arm_flex_joint_velocity_controller:
-      type: effort_controllers/JointVelocityController
+    hsrb4s/arm_flex_joint_velocity_controller:
+      type: velocity_controllers/JointVelocityController
       joint: arm_flex_joint
       pid:
         p: 8.0
@@ -157,8 +14,8 @@ controller_manager:
         d: 0.0
         i_clamp: 500.0
 
-    arm_lift_joint_velocity_controller:
-      type: effort_controllers/JointVelocityController
+    hsrb4s/arm_lift_joint_velocity_controller:
+      type: velocity_controllers/JointVelocityController
       joint: arm_lift_joint
       pid:
         p: 8.0
@@ -166,8 +23,8 @@ controller_manager:
         d: 0.0
         i_clamp: 500.0
 
-    arm_roll_joint_velocity_controller:
-      type: effort_controllers/JointVelocityController
+    hsrb4s/arm_roll_joint_velocity_controller:
+      type: velocity_controllers/JointVelocityController
       joint: arm_roll_joint
       pid:
         p: 8.0
@@ -175,8 +32,8 @@ controller_manager:
         d: 0.0
         i_clamp: 500.0
 
-    head_pan_joint_velocity_controller:
-      type: effort_controllers/JointVelocityController
+    hsrb4s/head_pan_joint_velocity_controller:
+      type: velocity_controllers/JointVelocityController
       joint: head_pan_joint
       pid:
         p: 8.0
@@ -184,8 +41,8 @@ controller_manager:
         d: 0.0
         i_clamp: 500.0
 
-    head_tilt_joint_velocity_controller:
-      type: effort_controllers/JointVelocityController
+    hsrb4s/head_tilt_joint_velocity_controller:
+      type: velocity_controllers/JointVelocityController
       joint: head_tilt_joint
       pid:
         p: 8.0
@@ -193,8 +50,8 @@ controller_manager:
         d: 0.0
         i_clamp: 500.0
 
-    wrist_flex_joint_velocity_controller:
-      type: effort_controllers/JointVelocityController
+    hsrb4s/wrist_flex_joint_velocity_controller:
+      type: velocity_controllers/JointVelocityController
       joint: wrist_flex_joint
       pid:
         p: 8.0
@@ -202,8 +59,8 @@ controller_manager:
         d: 0.0
         i_clamp: 500.0
 
-    wrist_roll_joint_velocity_controller:
-      type: effort_controllers/JointVelocityController
+    hsrb4s/wrist_roll_joint_velocity_controller:
+      type: velocity_controllers/JointVelocityController
       joint: wrist_roll_joint
       pid:
         p: 8.0
@@ -211,6 +68,11 @@ controller_manager:
         d: 0.0
         i_clamp: 500.0
 
-    hand_motor_joint_velocity_controller:
-      type: effort_controllers/JointEffortController
+    hsrb4s/hand_motor_joint_velocity_controller:
+      type: velocity_controllers/JointVelocityController
       joint: hand_motor_joint
+      pid:
+        p: 8.0
+        i: 1000.0
+        d: 0.0
+        i_clamp: 500.0
