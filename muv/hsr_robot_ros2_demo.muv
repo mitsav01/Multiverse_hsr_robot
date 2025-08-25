@@ -37,28 +37,35 @@ multiverse_clients:
       body: ["position", "quaternion"]
       joint: ["joint_rvalue", "joint_tvalue", "joint_linear_velocity", "joint_angular_velocity", "joint_force", "joint_torque"]
     receive:
+      # Base wheels (diff drive)
+      base_r_drive_wheel_joint_actuator: ["cmd_vel"]
+      base_l_drive_wheel_joint_actuator: ["cmd_vel"]
+
+      # Base roll joint
+      base_roll_joint_actuator: ["cmd_vel"]
+
       # Head actuators
-      head_pan_joint_actuator: ["cmd_joint_rvalue"]
-      head_tilt_joint_actuator: ["cmd_joint_rvalue"]
-      
+      head_pan_joint_actuator: ["cmd_vel"]
+      head_tilt_joint_actuator: ["cmd_vel"]
+
       # Arm actuators
-      arm_lift_joint_actuator: ["cmd_joint_rvalue"]
-      arm_flex_joint_actuator: ["cmd_joint_rvalue"]
-      arm_roll_joint_actuator: ["cmd_joint_rvalue"]
-      wrist_flex_joint_actuator: ["cmd_joint_rvalue"]
-      wrist_roll_joint_actuator: ["cmd_joint_rvalue"]
-      
-      # Gripper actuators
-      hand_motor_joint_actuator: ["cmd_joint_rvalue"]
-      hand_l_spring_proximal_joint_actuator: ["cmd_joint_rvalue"]
-      hand_r_spring_proximal_joint_actuator: ["cmd_joint_rvalue"]
+      arm_lift_joint_actuator: ["cmd_vel"]
+      arm_flex_joint_actuator: ["cmd_vel"]
+      arm_roll_joint_actuator: ["cmd_vel"]
+      wrist_flex_joint_actuator: ["cmd_vel"]
+      wrist_roll_joint_actuator: ["cmd_vel"]
+
+      # Hand / gripper actuators
+      hand_motor_joint_actuator: ["cmd_pos"]
+      hand_l_spring_proximal_joint_actuator: ["cmd_pos"]
+      hand_r_spring_proximal_joint_actuator: ["cmd_pos"]
 
   ros2:
     ros_nodes:
       services:
         socket:
           - port: 7400
-    
+
       publishers:
         tf:
           - meta_data:
@@ -113,42 +120,57 @@ multiverse_clients:
           config: hsr_control/config/ros2_controller.yaml
           tf_topic: /tf
           actuators:
-            # Head actuators
-            head_pan_joint_actuator: head_pan_joint
-            head_tilt_joint_actuator: head_tilt_joint
-            
             # Arm actuators
-            arm_lift_joint_actuator: arm_lift_joint
             arm_flex_joint_actuator: arm_flex_joint
+            arm_lift_joint_actuator: arm_lift_joint
             arm_roll_joint_actuator: arm_roll_joint
             wrist_flex_joint_actuator: wrist_flex_joint
             wrist_roll_joint_actuator: wrist_roll_joint
-            
+
+            # Head actuators
+            head_pan_joint_actuator: head_pan_joint
+            head_tilt_joint_actuator: head_tilt_joint
+
             # Gripper actuators
             hand_motor_joint_actuator: hand_motor_joint
             hand_l_spring_proximal_joint_actuator: hand_l_spring_proximal_joint
             hand_r_spring_proximal_joint_actuator: hand_r_spring_proximal_joint
-            
+
+            # Base wheels / roll
+            base_r_drive_wheel_joint_actuator: base_r_drive_wheel_joint
+            base_l_drive_wheel_joint_actuator: base_l_drive_wheel_joint
+            base_roll_joint_actuator: base_roll_joint
+
           controllers:
             spawn:
               - joint_state_broadcaster
+                arm_flex_joint_velocity_controller
+              - arm_lift_joint_velocity_controller
+              - arm_roll_joint_velocity_controller
+              - wrist_flex_joint_velocity_controller
+              - wrist_roll_joint_velocity_controller
+              - head_pan_joint_velocity_controller
+              - head_tilt_joint_velocity_controller
+              - hand_motor_joint_position_controller
+              - hand_l_spring_proximal_joint_position_controller
+              - hand_r_spring_proximal_joint_position_controller
               - arm_trajectory_controller
               - head_trajectory_controller
-              - gripper_controller
+              - diff_drive_base_controller
 
     ros2_run:
-        rviz2:
-          config: hsr_mujoco/rviz_config/rviz_config2.rviz
-          robot_descriptions:
-            hsrb4s_description: hsr_description/robots/hsrb4s.urdf
+      rviz2:
+        config: hsr_mujoco/rviz_config/rviz_config2.rviz
+        robot_descriptions:
+          hsrb4s_description: hsr_description/robots/hsrb4s.urdf
 
-        tf2_ros:
-          - static_transform_publisher:
-              - 0
-              - 0
-              - 0
-              - 0
-              - 0
-              - 0
-              - world
-              - base_footprint
+      tf2_ros:
+        - static_transform_publisher:
+            - 0
+            - 0
+            - 0
+            - 0
+            - 0
+            - 0
+            - world
+            - base_footprint
