@@ -66,22 +66,22 @@ POSSIBILITY OF SUCH DAMAGE.
     </inertial>
     <visual>
       <geometry>
-        <mesh filename="package://hsr_meshes/meshes/base_v2/base_light.obj"/>
+        <mesh filename="file://hsr_meshes/meshes/base_v2/base_light.dae"/>
       </geometry>
     </visual>
     <visual>
       <geometry>
-        <mesh filename="package://hsr_meshes/meshes/base_v2/body_light.obj"/>
+        <mesh filename="file://hsr_meshes/meshes/base_v2/body_light.dae"/>
       </geometry>
     </visual>
     <visual>
       <geometry>
-        <mesh filename="package://hsr_meshes/meshes/base_v2/torso_base.obj"/>
+        <mesh filename="file://hsr_meshes/meshes/base_v2/torso_base.dae"/>
       </geometry>
     </visual>
     <collision>
       <geometry>
-        <mesh filename="package://hsr_meshes/meshes/base_v2/base.stl"/>
+        <mesh filename="file://hsr_meshes/meshes/base_v2/base.stl"/>
       </geometry>
     </collision>
   </link>
@@ -268,12 +268,12 @@ POSSIBILITY OF SUCH DAMAGE.
   <link name="base_range_sensor_link">
     <visual>
       <geometry>
-        <mesh filename="package://hsr_meshes/meshes/sensors/laser.obj"/>
+        <mesh filename="file://hsr_meshes/meshes/sensors/laser.dae"/>
       </geometry>
     </visual>
     <collision>
       <geometry>
-        <mesh filename="package://hsr_meshes/meshes/sensors/laser.stl"/>
+        <mesh filename="file://hsr_meshes/meshes/sensors/laser.stl"/>
       </geometry>
     </collision>
   </link>
@@ -456,12 +456,12 @@ POSSIBILITY OF SUCH DAMAGE.
     </inertial>
     <visual>
       <geometry>
-        <mesh filename="package://hsr_meshes/meshes/torso_v0/torso_light.obj"/>
+        <mesh filename="file://hsr_meshes/meshes/torso_v0/torso_light.dae"/>
       </geometry>
     </visual>
     <collision>
       <geometry>
-        <mesh filename="package://hsr_meshes/meshes/torso_v0/torso.stl"/>
+        <mesh filename="file://hsr_meshes/meshes/torso_v0/torso.stl"/>
       </geometry>
     </collision>
   </link>
@@ -491,12 +491,12 @@ POSSIBILITY OF SUCH DAMAGE.
     </inertial>
     <visual>
       <geometry>
-        <mesh filename="package://hsr_meshes/meshes/head_v1/head_pan.obj"/>
+        <mesh filename="file://hsr_meshes/meshes/head_v1/head_pan.dae"/>
       </geometry>
     </visual>
     <collision>
       <geometry>
-        <mesh filename="package://hsr_meshes/meshes/head_v1/head_pan.stl"/>
+        <mesh filename="file://hsr_meshes/meshes/head_v1/head_pan.stl"/>
       </geometry>
     </collision>
   </link>
@@ -516,27 +516,27 @@ POSSIBILITY OF SUCH DAMAGE.
     </inertial>
     <visual>
       <geometry>
-        <mesh filename="package://hsr_meshes/meshes/head_v1/head_upper.obj"/>
+        <mesh filename="file://hsr_meshes/meshes/head_v1/head_upper.dae"/>
       </geometry>
     </visual>
     <visual>
       <geometry>
-        <mesh filename="package://hsr_meshes/meshes/head_v1/head_tilt.obj"/>
+        <mesh filename="file://hsr_meshes/meshes/head_v1/head_tilt.dae"/>
       </geometry>
     </visual>
     <visual>
       <geometry>
-        <mesh filename="package://hsr_meshes/meshes/head_v1/tablet_base.obj"/>
+        <mesh filename="file://hsr_meshes/meshes/head_v1/tablet_base.dae"/>
       </geometry>
     </visual>
     <collision>
       <geometry>
-        <mesh filename="package://hsr_meshes/meshes/head_v1/head.stl"/>
+        <mesh filename="file://hsr_meshes/meshes/head_v1/head.stl"/>
       </geometry>
     </collision>
     <collision>
       <geometry>
-        <mesh filename="package://hsr_meshes/meshes/head_v1/tablet.stl"/>
+        <mesh filename="file://hsr_meshes/meshes/head_v1/tablet.stl"/>
       </geometry>
     </collision>
   </link>
@@ -549,7 +549,7 @@ POSSIBILITY OF SUCH DAMAGE.
     <visual>
       <origin rpy="0.0 0.0 0.0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://hsr_meshes/meshes/sensors/head_camera.obj"/>
+        <mesh filename="file://hsr_meshes/meshes/sensors/head_camera.dae"/>
       </geometry>
     </visual>
   </link>
@@ -605,7 +605,7 @@ POSSIBILITY OF SUCH DAMAGE.
     <visual>
       <origin rpy="0.0 0.0 0.0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://hsr_meshes/meshes/sensors/head_camera.obj"/>
+        <mesh filename="file://hsr_meshes/meshes/sensors/head_camera.dae"/>
       </geometry>
     </visual>
   </link>
@@ -710,13 +710,13 @@ POSSIBILITY OF SUCH DAMAGE.
     <visual>
       <origin rpy="0.0 0.0 0.0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://hsr_meshes/meshes/sensors/rgbd_light.obj"/>
+        <mesh filename="file://hsr_meshes/meshes/sensors/rgbd_light.dae"/>
       </geometry>
     </visual>
     <collision>
       <origin rpy="0.0 0.0 0.0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://hsr_meshes/meshes/sensors/rgbd.stl"/>
+        <mesh filename="file://hsr_meshes/meshes/sensors/rgbd.stl"/>
       </geometry>
     </collision>
   </link>
@@ -848,12 +848,12 @@ POSSIBILITY OF SUCH DAMAGE.
     </inertial>
     <visual>
       <geometry>
-        <mesh filename="package://hsr_meshes/meshes/arm_v0/shoulder.obj"/>
+        <mesh filename="file://hsr_meshes/meshes/arm_v0/shoulder.dae"/>
       </geometry>
     </visual>
     <collision>
       <geometry>
-        <mesh filename="package://hsr_meshes/meshes/arm_v0/shoulder.stl"/>
+        <mesh filename="file://hsr_meshes/meshes/arm_v0/shoulder.stl"/>
       </geometry>
     </collision>
   </link>
@@ -873,12 +873,12 @@ POSSIBILITY OF SUCH DAMAGE.
     </inertial>
     <visual>
       <geometry>
-        <mesh filename="package://hsr_meshes/meshes/arm_v0/arm_flex_light.obj"/>
+        <mesh filename="file://hsr_meshes/meshes/arm_v0/arm_flex_light.dae"/>
       </geometry>
     </visual>
     <collision>
       <geometry>
-        <mesh filename="package://hsr_meshes/meshes/arm_v0/arm_flex.stl"/>
+        <mesh filename="file://hsr_meshes/meshes/arm_v0/arm_flex.stl"/>
       </geometry>
     </collision>
   </link>
@@ -898,12 +898,12 @@ POSSIBILITY OF SUCH DAMAGE.
     </inertial>
     <visual>
       <geometry>
-        <mesh filename="package://hsr_meshes/meshes/arm_v0/arm_roll_light.obj"/>
+        <mesh filename="file://hsr_meshes/meshes/arm_v0/arm_roll_light.dae"/>
       </geometry>
     </visual>
     <collision>
       <geometry>
-        <mesh filename="package://hsr_meshes/meshes/arm_v0/arm_roll.stl"/>
+        <mesh filename="file://hsr_meshes/meshes/arm_v0/arm_roll.stl"/>
       </geometry>
     </collision>
   </link>
@@ -977,7 +977,7 @@ POSSIBILITY OF SUCH DAMAGE.
     </inertial>
     <visual>
       <geometry>
-        <mesh filename="package://hsr_meshes/meshes/wrist_v0/wrist_flex.obj"/>
+        <mesh filename="file://hsr_meshes/meshes/wrist_v0/wrist_flex.dae"/>
       </geometry>
       <material name="body_sub"/>
     </visual>
@@ -1011,12 +1011,12 @@ POSSIBILITY OF SUCH DAMAGE.
     </inertial>
     <visual>
       <geometry>
-        <mesh filename="package://hsr_meshes/meshes/wrist_v0/wrist_roll.obj"/>
+        <mesh filename="file://hsr_meshes/meshes/wrist_v0/wrist_roll.dae"/>
       </geometry>
     </visual>
     <collision>
       <geometry>
-        <mesh filename="package://hsr_meshes/meshes/wrist_v0/wrist_roll.stl"/>
+        <mesh filename="file://hsr_meshes/meshes/wrist_v0/wrist_roll.stl"/>
       </geometry>
     </collision>
   </link>
@@ -1092,13 +1092,13 @@ POSSIBILITY OF SUCH DAMAGE.
     </inertial>
     <visual>
       <geometry>
-        <mesh filename="package://hsr_meshes/meshes/hand_v0/palm.obj"/>
+        <mesh filename="file://hsr_meshes/meshes/hand_v0/palm.stl"/>
       </geometry>
       <material name="body_sub"/>
     </visual>
     <collision>
       <geometry>
-        <mesh filename="package://hsr_meshes/meshes/hand_v0/palm.stl"/>
+        <mesh filename="file://hsr_meshes/meshes/hand_v0/palm.stl"/>
       </geometry>
     </collision>
   </link>
@@ -1145,13 +1145,13 @@ POSSIBILITY OF SUCH DAMAGE.
     </inertial>
     <visual>
       <geometry>
-        <mesh filename="package://hsr_meshes/meshes/hand_v0/l_proximal.obj"/>
+        <mesh filename="file://hsr_meshes/meshes/hand_v0/l_proximal.stl"/>
       </geometry>
       <material name="body_sub"/>
     </visual>
     <collision>
       <geometry>
-        <mesh filename="package://hsr_meshes/meshes/hand_v0/l_proximal.stl"/>
+        <mesh filename="file://hsr_meshes/meshes/hand_v0/l_proximal.stl"/>
       </geometry>
     </collision>
   </link>
@@ -1186,13 +1186,13 @@ POSSIBILITY OF SUCH DAMAGE.
     </inertial>
     <visual>
       <geometry>
-        <mesh filename="package://hsr_meshes/meshes/hand_v0/l_distal.obj"/>
+        <mesh filename="file://hsr_meshes/meshes/hand_v0/l_distal.stl"/>
       </geometry>
       <material name="body_sub"/>
     </visual>
     <collision>
       <geometry>
-        <mesh filename="package://hsr_meshes/meshes/hand_v0/l_distal.stl"/>
+        <mesh filename="file://hsr_meshes/meshes/hand_v0/l_distal.stl"/>
       </geometry>
     </collision>
   </link>
@@ -1255,13 +1255,13 @@ POSSIBILITY OF SUCH DAMAGE.
     </inertial>
     <visual>
       <geometry>
-        <mesh filename="package://hsr_meshes/meshes/hand_v0/r_proximal.obj"/>
+        <mesh filename="file://hsr_meshes/meshes/hand_v0/r_proximal.stl"/>
       </geometry>
       <material name="body_sub"/>
     </visual>
     <collision>
       <geometry>
-        <mesh filename="package://hsr_meshes/meshes/hand_v0/r_proximal.stl"/>
+        <mesh filename="file://hsr_meshes/meshes/hand_v0/r_proximal.stl"/>
       </geometry>
     </collision>
   </link>
@@ -1296,13 +1296,13 @@ POSSIBILITY OF SUCH DAMAGE.
     </inertial>
     <visual>
       <geometry>
-        <mesh filename="package://hsr_meshes/meshes/hand_v0/r_distal.obj"/>
+        <mesh filename="file://hsr_meshes/meshes/hand_v0/r_distal.stl"/>
       </geometry>
       <material name="body_sub"/>
     </visual>
     <collision>
       <geometry>
-        <mesh filename="package://hsr_meshes/meshes/hand_v0/r_distal.stl"/>
+        <mesh filename="file://hsr_meshes/meshes/hand_v0/r_distal.stl"/>
       </geometry>
     </collision>
   </link>

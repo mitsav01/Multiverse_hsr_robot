@@ -20,11 +20,11 @@ simulations:
         apply:
           body:
             hsrb4s:
-              pos: [0, 0, 0]   # small offset to avoid self-transform
+              pos: [0, 0, 0.0]
               quat: [0.0, 0.0, 0.0, 1.0]
             gravcomp: 1
     config:
-      step_size: 0.002 
+      step_size: 0.002
 
 multiverse_server:
   host: "tcp://127.0.0.1"
@@ -55,6 +55,10 @@ multiverse_clients:
 
   ros2:
     ros_nodes:
+      services:
+        socket:
+          - port: 7400
+    
       publishers:
         tf:
           - meta_data:
@@ -66,9 +70,7 @@ multiverse_clients:
             port: 7301
             topic: /tf
             rate: 60
-            root_frame_id: world
-            body: hsrb4s
-
+            root_frame_id: map
         odom:
           - meta_data:
               world_name: world
@@ -81,7 +83,7 @@ multiverse_clients:
             tf_topic: /tf
             rate: 60
             body: hsrb4s
-            root_frame_id: odom
+            frame_id: map
 
       subscribers:
         cmd_vel:
@@ -91,7 +93,6 @@ multiverse_clients:
               angle_unit: rad
               mass_unit: kg
               time_unit: s
-              handedness: rhs
             port: 7200
             topic: /cmd_vel
             body: hsrb4s
@@ -108,7 +109,7 @@ multiverse_clients:
         controller_manager:
           robot: hsrb4s
           robot_description: /robot_description
-          urdf: hsr_description/hsr_description/robots/hsrb4s.urdf
+          urdf: hsr_description/robots/hsrb4s.urdf
           config: hsr_control/config/ros2_controller.yaml
           tf_topic: /tf
           actuators:
@@ -136,7 +137,18 @@ multiverse_clients:
               - gripper_controller
 
     ros2_run:
-      rviz2:
-        config: hsr_mujoco/rviz_config/rviz_config2.rviz
-        robot_descriptions:
-          hsrb4s_description: hsr_description/hsr_description/robots/hsrb4s.urdf
+        rviz2:
+          config: hsr_mujoco/rviz_config/rviz_config2.rviz
+          robot_descriptions:
+            hsrb4s_description: hsr_description/robots/hsrb4s.urdf
+
+        tf2_ros:
+          - static_transform_publisher:
+              - 0
+              - 0
+              - 0
+              - 0
+              - 0
+              - 0
+              - world
+              - base_footprint
